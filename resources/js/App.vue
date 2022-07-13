@@ -1,8 +1,8 @@
 <template>
-    <div class="container">
+    <div class="container p-5">
 
-        <div class="p-2 mb-5">
-            <h2 class="title-content">Posts divisi per categorie</h2>
+        <div class="bg-dark p-2 mb-5">
+            <h2 class="title-content text-info">Posts divisi per categorie</h2>
 
             <nav id="navbar-example2" class="navbar navbar-light bg-light d-flex justify-content-center">
                 <ul class="nav nav-pills">
@@ -26,7 +26,7 @@
 
                         <div v-if="category.posts">
                             <li class="list-group-item d-flex justify-content-between align-items-center"
-                            v-for="post in postsCat.category.posts" :key="post.id">
+                            v-for="post in category.posts" :key="post.id">
                                 <h4>{{post.title}}</h4>
                             </li>
                         </div>
@@ -57,7 +57,7 @@ export default {
     data(){
         return{
             apiUrl: 'http://127.0.0.1:8001/api/posts',
-            postsCat: null
+            postsCat: []
         }
     },
 

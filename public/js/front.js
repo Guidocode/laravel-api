@@ -1916,7 +1916,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       apiUrl: 'http://127.0.0.1:8001/api/posts',
-      postsCat: null
+      postsCat: []
     };
   },
   methods: {
@@ -1952,11 +1952,11 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "container"
+    staticClass: "container p-5"
   }, [_c("div", {
-    staticClass: "p-2 mb-5"
+    staticClass: "bg-dark p-2 mb-5"
   }, [_c("h2", {
-    staticClass: "title-content"
+    staticClass: "title-content text-info"
   }, [_vm._v("Posts divisi per categorie")]), _vm._v(" "), _c("nav", {
     staticClass: "navbar navbar-light bg-light d-flex justify-content-center",
     attrs: {
@@ -1997,7 +1997,7 @@ var render = function render() {
       }
     }, [_c("span", {
       staticClass: "badge bg-info text-dark m-2"
-    }, [_vm._v(_vm._s(category.name))])]), _vm._v(" "), category.posts ? _c("div", _vm._l(_vm.postsCat.category.posts, function (post) {
+    }, [_vm._v(_vm._s(category.name))])]), _vm._v(" "), category.posts ? _c("div", _vm._l(category.posts, function (post) {
       return _c("li", {
         key: post.id,
         staticClass: "list-group-item d-flex justify-content-between align-items-center"
