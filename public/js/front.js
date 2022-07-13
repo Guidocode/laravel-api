@@ -1908,10 +1908,29 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
+  data: function data() {
+    return {
+      apiUrl: 'http://127.0.0.1:8001/api/posts',
+      postsCat: null
+    };
+  },
+  methods: {
+    getApi: function getApi() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.apiUrl).then(function (resp) {
+        _this.postsCat = resp.data;
+        console.log(_this.postsCat);
+      });
+    }
+  },
   mounted: function mounted() {
-    console.log('ciao');
+    this.getApi();
   }
 });
 
@@ -1932,7 +1951,61 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_vm._v("\n        VUE\n    ")]);
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "p-2 mb-5"
+  }, [_c("h2", {
+    staticClass: "title-content"
+  }, [_vm._v("Posts divisi per categorie")]), _vm._v(" "), _c("nav", {
+    staticClass: "navbar navbar-light bg-light d-flex justify-content-center",
+    attrs: {
+      id: "navbar-example2"
+    }
+  }, [_c("ul", {
+    staticClass: "nav nav-pills"
+  }, _vm._l(_vm.postsCat.categories, function (category) {
+    return _c("li", {
+      key: category.id,
+      staticClass: "nav-item"
+    }, [_c("a", {
+      staticClass: "nav-link",
+      attrs: {
+        href: "#category" + category.id
+      }
+    }, [_vm._v(_vm._s(category.name))])]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "position-relative",
+    staticStyle: {
+      height: "400px",
+      "overflow-y": "scroll"
+    },
+    attrs: {
+      "data-spy": "scroll",
+      "data-target": "#navbar-example2",
+      "data-offset": "0"
+    }
+  }, [_c("ul", {
+    staticClass: "list-group"
+  }, _vm._l(_vm.postsCat.categories, function (category) {
+    return _c("div", {
+      key: category.id
+    }, [_c("h3", {
+      staticClass: "bg-light mt-3 mb-0",
+      attrs: {
+        id: "category" + category.id
+      }
+    }, [_c("span", {
+      staticClass: "badge bg-info text-dark m-2"
+    }, [_vm._v(_vm._s(category.name))])]), _vm._v(" "), category.posts ? _c("div", _vm._l(_vm.postsCat.category.posts, function (post) {
+      return _c("li", {
+        key: post.id,
+        staticClass: "list-group-item d-flex justify-content-between align-items-center"
+      }, [_c("h4", [_vm._v(_vm._s(post.title))])]);
+    }), 0) : _c("div", [_c("li", {
+      staticClass: "list-group-item d-flex justify-content-between align-items-center"
+    }, [_vm._v("\n                                Nessun post appartenente a questa categoria\n                            ")])])]);
+  }), 0)])])]);
 };
 
 var staticRenderFns = [];
@@ -14253,7 +14326,7 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 var app = new Vue({
   el: '#app',
   render: function render(h) {
-    return h(app);
+    return h(_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   }
 });
 
