@@ -1916,7 +1916,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       apiUrl: 'http://127.0.0.1:8001/api/posts',
-      postsCat: []
+      posts: []
     };
   },
   methods: {
@@ -1924,8 +1924,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.apiUrl).then(function (resp) {
-        _this.postsCat = resp.data;
-        console.log(_this.postsCat);
+        _this.posts = resp.data.posts;
+        console.log(_this.posts);
       });
     }
   },
@@ -1954,58 +1954,24 @@ var render = function render() {
   return _c("div", {
     staticClass: "container p-5"
   }, [_c("div", {
-    staticClass: "bg-dark p-2 mb-5"
-  }, [_c("h2", {
-    staticClass: "title-content text-info"
-  }, [_vm._v("Posts divisi per categorie")]), _vm._v(" "), _c("nav", {
-    staticClass: "navbar navbar-light bg-light d-flex justify-content-center",
-    attrs: {
-      id: "navbar-example2"
-    }
-  }, [_c("ul", {
-    staticClass: "nav nav-pills"
-  }, _vm._l(_vm.postsCat.categories, function (category) {
-    return _c("li", {
-      key: category.id,
-      staticClass: "nav-item"
-    }, [_c("a", {
-      staticClass: "nav-link",
-      attrs: {
-        href: "#category" + category.id
-      }
-    }, [_vm._v(_vm._s(category.name))])]);
-  }), 0)]), _vm._v(" "), _c("div", {
-    staticClass: "position-relative",
-    staticStyle: {
-      height: "400px",
-      "overflow-y": "scroll"
-    },
-    attrs: {
-      "data-spy": "scroll",
-      "data-target": "#navbar-example2",
-      "data-offset": "0"
-    }
-  }, [_c("ul", {
     staticClass: "list-group"
-  }, _vm._l(_vm.postsCat.categories, function (category) {
-    return _c("div", {
-      key: category.id
-    }, [_c("h3", {
-      staticClass: "bg-light mt-3 mb-0",
+  }, [_c("h2", {
+    staticClass: "title-content text-dark"
+  }, [_vm._v("Posts")]), _vm._v(" "), _vm._l(_vm.posts, function (post) {
+    return _c("a", {
+      key: post.id,
+      staticClass: "list-group-item list-group-item-action flex-column align-items-start",
       attrs: {
-        id: "category" + category.id
+        href: "#"
       }
-    }, [_c("span", {
-      staticClass: "badge bg-info text-dark m-2"
-    }, [_vm._v(_vm._s(category.name))])]), _vm._v(" "), category.posts ? _c("div", _vm._l(category.posts, function (post) {
-      return _c("li", {
-        key: post.id,
-        staticClass: "list-group-item d-flex justify-content-between align-items-center"
-      }, [_c("h4", [_vm._v(_vm._s(post.title))])]);
-    }), 0) : _c("div", [_c("li", {
-      staticClass: "list-group-item d-flex justify-content-between align-items-center"
-    }, [_vm._v("\n                                Nessun post appartenente a questa categoria\n                            ")])])]);
-  }), 0)])])]);
+    }, [_c("div", {
+      staticClass: "d-flex w-100 justify-content-between"
+    }, [_c("h5", {
+      staticClass: "mb-1"
+    }, [_vm._v(_vm._s(post.title))])]), _vm._v(" "), _c("p", {
+      staticClass: "mb-1"
+    }, [_vm._v(_vm._s(post.description))])]);
+  })], 2)]);
 };
 
 var staticRenderFns = [];
